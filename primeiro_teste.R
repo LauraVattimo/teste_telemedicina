@@ -10,5 +10,11 @@ calculadora_medicamentos$APRESENTAÇÃO <- str_replace(calculadora_medicamentos$
 calculadora_medicamentos$APRESENTAÇÃO <- str_replace(calculadora_medicamentos$APRESENTAÇÃO, 'Caixa', 'Contem')
 calculadora_medicamentos$APRESENTAÇÃO <- str_replace(calculadora_medicamentos$APRESENTAÇÃO, 'MG I/ML', 'MG/ML')
 calculadora_medicamentos$APRESENTAÇÃO <- str_replace(calculadora_medicamentos$APRESENTAÇÃO, 'FA VD TRANS', 'Frasco-Ampola Vidro Transparente')
+calculadora_medicamentos$APRESENTAÇÃO <- str_replace(calculadora_medicamentos$APRESENTAÇÃO, '/', ' / ')
 
-View(calculadora_medicamentos)
+calculadora_medicamentos2 <- calculadora_medicamentos %>% filter(grepl('/', APRESENTAÇÃO))
+library(dplyr)
+library(stringr)
+
+calculadora_medicamentos2<- calculadora_medicamentos %>% filter(str_detect(calculadora_medicamentos$APRESENTAÇÃO, " / "))
+View(calculadora_medicamentos2)
